@@ -2,7 +2,6 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const initialValues = {
-  username: "",
   email: "",
   password: "",
 };
@@ -12,9 +11,6 @@ const onSubmit = (values) => {
 };
 
 const validationSchema = Yup.object({
-  username: Yup.string()
-    .required("Username is required")
-    .max(15, "Must be less than 15 characters long"),
   email: Yup.string()
     .required("Email is required")
     .email("Invalid email address"),
@@ -34,21 +30,6 @@ const FormikLoginYup = () => {
     <div className="wrapper">
       <h2>Login Form</h2>
       <form onSubmit={formik.handleSubmit} className="login-form">
-        <div className="form-row mb-3">
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              className="form-control"
-              id="username"
-              name="username"
-              type="text"
-              {...formik.getFieldProps("username")}
-            />
-            {formik.touched.username && formik.errors.username ? (
-              <p className="error">{formik.errors.username}</p>
-            ) : null}
-          </div>
-        </div>
         <div className="form-row mb-3">
           <div className="form-group">
             <label htmlFor="email">Email Address</label>

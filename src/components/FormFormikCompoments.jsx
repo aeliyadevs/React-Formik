@@ -2,7 +2,6 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 const initialValues = {
-  username: "",
   email: "",
   password: "",
 };
@@ -12,9 +11,6 @@ const onSubmit = (values) => {
 };
 
 const validationSchema = Yup.object({
-  username: Yup.string()
-    .required("Username is required")
-    .max(15, "Must be less than 15 characters long"),
   email: Yup.string()
     .required("Email is required")
     .email("Invalid email address"),
@@ -23,57 +19,50 @@ const validationSchema = Yup.object({
     .min(8, "Must be 8 or more characters"),
 });
 
-const FormikLoginYup = () => {
+const FormFormikCompoments = () => {
   return (
-    <Formik
-      className="wrapper"
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={onSubmit}
-    >
-      <h2>Login Form</h2>
-      <Form className="login-form">
-        <div className="form-row mb-3">
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <Field
-              className="form-control"
-              id="username"
-              name="username"
-              type="text"
-            />
-            <ErrorMessage name="username" />
+    <div className="wrapper">
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        <Form className="login-form">
+          <h2>Login Form</h2>
+          <div className="form-row mb-3">
+            <div className="form-group">
+              <label htmlFor="email">Email Address</label>
+              <Field
+                className="form-control"
+                id="email"
+                name="email"
+                type="email"
+              />
+              <p className="error">
+                <ErrorMessage name="email" />
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="form-row mb-3">
-          <div className="form-group">
-            <label htmlFor="email">Email Address</label>
-            <Field
-              className="form-control"
-              id="email"
-              name="email"
-              type="email"
-            />
-            <ErrorMessage name="email" />
+          <div className="form-row mb-3">
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <Field
+                className="form-control"
+                id="password"
+                name="password"
+                type="password"
+              />
+              <p className="error">
+                <ErrorMessage name="password" />
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="form-row mb-3">
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <Field
-              className="form-control"
-              id="password"
-              name="password"
-              type="password"
-            />
-            <ErrorMessage name="password" />
-          </div>
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </Form>
-    </Formik>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 };
-export default FormikLoginYup;
+export default FormFormikCompoments;

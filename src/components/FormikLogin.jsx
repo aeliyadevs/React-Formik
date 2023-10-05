@@ -1,7 +1,6 @@
 import { useFormik } from "formik";
 
 const initialValues = {
-  username: "",
   email: "",
   password: "",
 };
@@ -12,12 +11,6 @@ const onSubmit = (values) => {
 
 const validate = (values) => {
   const errors = {};
-  if (!values.username) {
-    errors.username = "Username is equired";
-  }
-  //   else if (values.username.length < 8) {
-  //     errors.username = "Must be 8 or more character";
-  //   }
 
   if (!values.email) {
     errors.email = "Email is required";
@@ -43,23 +36,6 @@ const FormikLogin = () => {
     <div className="wrapper">
       <h2>Login Form</h2>
       <form onSubmit={formik.handleSubmit} className="login-form">
-        <div className="form-row mb-3">
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              className="form-control"
-              id="username"
-              name="username"
-              type="text"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.username}
-            />
-            {formik.touched.username && formik.errors.username ? (
-              <p className="error">{formik.errors.username}</p>
-            ) : null}
-          </div>
-        </div>
         <div className="form-row mb-3">
           <div className="form-group">
             <label htmlFor="email">Email Address</label>

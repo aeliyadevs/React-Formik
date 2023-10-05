@@ -1,17 +1,19 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import "./App.scss";
 import FormikLogin from "./components/FormikLogin";
 import FormikLoginYup from "./components/FormikLoginYup";
+import FormFormikComponents from "./components/FormFormikCompoments";
+import DefaultLayout from "./layouts/DefaultLayout";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      {/* <FormikLogin /> */}
-      <FormikLoginYup />
+      <DefaultLayout>
+        {/* <FormikLogin />
+        <FormikLoginYup /> */}
+        <FormFormikComponents />
+      </DefaultLayout>
     </>
   );
 }
