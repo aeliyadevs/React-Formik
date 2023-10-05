@@ -1,4 +1,4 @@
-import { useFormik } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 const initialValues = {
@@ -24,66 +24,56 @@ const validationSchema = Yup.object({
 });
 
 const FormikLoginYup = () => {
-  const formik = useFormik({
-    initialValues,
-    // validate,
-    validationSchema,
-    onSubmit,
-  });
   return (
-    <div className="wrapper">
+    <Formik
+      className="wrapper"
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+    >
       <h2>Login Form</h2>
-      <form onSubmit={formik.handleSubmit} className="login-form">
+      <Form className="login-form">
         <div className="form-row mb-3">
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input
+            <Field
               className="form-control"
               id="username"
               name="username"
               type="text"
-              {...formik.getFieldProps("username")}
             />
-            {formik.touched.username && formik.errors.username ? (
-              <p className="error">{formik.errors.username}</p>
-            ) : null}
+            <ErrorMessage name="username" />
           </div>
         </div>
         <div className="form-row mb-3">
           <div className="form-group">
             <label htmlFor="email">Email Address</label>
-            <input
+            <Field
               className="form-control"
               id="email"
               name="email"
               type="email"
-              {...formik.getFieldProps("email")}
             />
-            {formik.touched.email && formik.errors.email ? (
-              <p className="error">{formik.errors.email}</p>
-            ) : null}
+            <ErrorMessage name="email" />
           </div>
         </div>
         <div className="form-row mb-3">
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input
+            <Field
               className="form-control"
               id="password"
               name="password"
               type="password"
-              {...formik.getFieldProps("password")}
             />
-            {formik.touched.password && formik.errors.password ? (
-              <p className="error">{formik.errors.password}</p>
-            ) : null}
+            <ErrorMessage name="password" />
           </div>
         </div>
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
-      </form>
-    </div>
+      </Form>
+    </Formik>
   );
 };
 export default FormikLoginYup;
