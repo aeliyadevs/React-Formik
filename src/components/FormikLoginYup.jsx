@@ -66,9 +66,7 @@ const FormikLoginYup = () => {
               id="username"
               name="username"
               type="text"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.username}
+              {...formik.getFieldProps("username")}
             />
             {formik.touched.username && formik.errors.username ? (
               <p className="error">{formik.errors.username}</p>
@@ -83,9 +81,7 @@ const FormikLoginYup = () => {
               id="email"
               name="email"
               type="email"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
+              {...formik.getFieldProps("email")}
             />
             {formik.touched.email && formik.errors.email ? (
               <p className="error">{formik.errors.email}</p>
@@ -100,9 +96,7 @@ const FormikLoginYup = () => {
               id="password"
               name="password"
               type="password"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.password}
+              {...formik.getFieldProps("password")}
             />
             {formik.touched.password && formik.errors.password ? (
               <p className="error">{formik.errors.password}</p>
